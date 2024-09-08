@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 573920725095497765}
   - component: {fileID: 793041661919499514}
   - component: {fileID: 8462951152094260714}
+  - component: {fileID: 502331735363440161}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -130,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 5
   runSpeed: 8
+  jumpImpluse: 10
   _isMoving: 0
   _isRunning: 0
   _isFacingRight: 1
@@ -238,6 +240,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: faacb8c6-8901-49e8-85d5-32fa49878c20
     m_ActionName: Player/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3b37d82f-ea35-4757-b08c-3ef75a44ef4a
+    m_ActionName: Player/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -299,3 +305,31 @@ CapsuleCollider2D:
   m_Offset: {x: -0.012315601, y: -0.24631345}
   m_Size: {x: 0.58797055, y: 1.7456441}
   m_Direction: 0
+--- !u!114 &502331735363440161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321058715340688697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53582763af34d7148b9fb01571648175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  groundDistance: 0.05
+  _isGrounded: 0
