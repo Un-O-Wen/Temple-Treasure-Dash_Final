@@ -132,6 +132,7 @@ MonoBehaviour:
   walkSpeed: 5
   runSpeed: 8
   jumpImpluse: 10
+  airWalkSpeed: 3
   _isMoving: 0
   _isRunning: 0
   _isFacingRight: 1
@@ -181,7 +182,19 @@ MonoBehaviour:
     m_ActionId: 62d8709b-29f3-43d9-b8b7-27d2d2014af7
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2780354250180759963}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 13ff5ecf-898f-44b4-9e04-03424afe4144
     m_ActionName: Player/Attack[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -332,4 +345,8 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   groundDistance: 0.05
+  wallDistance: 0.2
+  ceilingDistance: 0.05
   _isGrounded: 0
+  _isOnWall: 0
+  _isOnCeiling: 0
