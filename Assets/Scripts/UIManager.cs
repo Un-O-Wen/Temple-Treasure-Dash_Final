@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
@@ -44,5 +45,19 @@ public class UIManager : MonoBehaviour
         TMP_Text tmpText = Instantiate(healthTextPrefab, spawnPosition, Quaternion.identity, gameCanvas.transform).GetComponent<TMP_Text>();
 
         tmpText.text = healedRestored.ToString();
+    }
+
+    public void OnExitGame(InputAction.CallbackContext context)
+    {
+#if (UNITY_EDITOR || DEVLOPMENT_BUILD)
+#endif
+
+#if(UNITY_EDITOR)
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif (UNITY_STANDALONE)
+    Application.Quit();
+#elif (UNITY_WEBGL)
+    SceneManager.LoadScene("QuitScene");
+#endif
     }
 }
