@@ -120,6 +120,7 @@ public class Damageable : MonoBehaviour
             animator.SetTrigger(AnimationStrings.hitTrigger);
             LockVelocity = true;
             damageableHit?.Invoke(damage, knockback);
+            CharacterEvents.characterDamaged.Invoke(gameObject, damage);
 
             return true;
         }
@@ -127,7 +128,19 @@ public class Damageable : MonoBehaviour
         return false;
     }
 
+    public bool Heal(int healthRestore)
+    {
+        if(IsAlive && Health < MaxHealth)
+        {
+            int maxHeal = Mathf.Max(MaxHealth - Health, 0);
+            int actualHeal = Mathf.Min(maxHeal, healthRestore);
+            Health += actualHeal;
 
+            CharacterEvents.characterHealed(gameObject, actualHeal);
+            return true;
+        }
+        return false;
+    }
 
 
 }
