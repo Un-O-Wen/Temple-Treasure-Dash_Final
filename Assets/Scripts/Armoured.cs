@@ -7,7 +7,8 @@ using UnityEngine;
 
 public class Armoured : MonoBehaviour
 {
-    public float walkSpeed = 3f;
+    public float walkAcceleration = 3f;
+    public float maxSpeed = 3.0f;
     public DetectionZone attackZone;
     public float walkStopRate = 0.05f;
     public DetectionZone cliffDetectionZone;
@@ -103,7 +104,8 @@ public class Armoured : MonoBehaviour
         if(!damageable.LockVelocity)
         {
             if (CanMove)
-                rb.velocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.velocity.y);
+                //Accelerates to max speed
+                rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x + (walkAcceleration * walkDirectionVector.x * Time.deltaTime), -maxSpeed, maxSpeed), rb.velocity.y);
             else
                 rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, walkStopRate), rb.velocity.y);
         }
